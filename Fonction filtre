@@ -1,0 +1,33 @@
+Creer fonction filtre a partir d'un tableau de donnee ...
+
+
+// 1---La fonction 'gettaches()' , dans services est  une requete vers l'api ('this.taches') qui permet de recuperer toutes les taches entregistres
+
+        gettaches(): Observable<any> {
+    return this.http.get(`${this.taches}/taches`);
+  }
+
+
+  
+// 2---La fonction dans le TS  qui prend le tableau de donnees ('this.tableautaches') et effectue un filtre selon le staut initialized
+// tache est un tableau qu contient toutes les donnees 'taches' aussi ,  dans  le model de tache il y'a : statuttache
+// la fonction regroupe toutes les donnes statuttache =  'initialized' et vas permettre en cliquant sur un boutton il te montre que les statuttache =  'initialized' 
+
+
+getTachesInitialized() {
+  return this.api.gettaches().subscribe((res: any) => {
+    this.tableautaches = res.filter(
+      (tache: { statuttache: string }) => tache.statuttache === 'initialized'
+    );
+    // Update the count or do other operations...
+  });
+}
+
+
+// 3---- Appel La methode dans le HTML 
+
+  <button (click)="getTachesInitialized()">Show Initialized Tasks</button>
+
+
+
+

@@ -19,14 +19,20 @@ getTachesInitialized() {
     this.tableautaches = res.filter(
       (tache: { statuttache: string }) => tache.statuttache === 'initialized'
     );
-    // Update the count or do other operations...
+    // Permet d afficher le nombre disponible apres filtrage : le stock dans initializedCount ... on initialize d abord
+    //on initialize: initializedCount: number = 0; 
+         this.initializedCount = this.tableautaches.length;
+  });
   });
 }
+
 
 
 // 3---- Appel La methode dans le HTML 
 
   <button (click)="getTachesInitialized()">Show Initialized Tasks</button>
+//pour afficher le count 
+{{initializedCount}}
 
 
 

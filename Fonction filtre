@@ -37,3 +37,18 @@ getTachesInitialized() {
 
 
 
+
+BONUS pour ALL:
+filtrebuttongetAllTaches() {
+  return this.api.gettaches().subscribe((res: any) => {
+    this.tableautaches = res;
+
+    // Update the count or do other operations...
+    this.nombrealltache = this.tableautaches.length;
+  });
+
+}
+
+
+
+
